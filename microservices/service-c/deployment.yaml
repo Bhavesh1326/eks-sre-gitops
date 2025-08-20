@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: service-b
+  name: service-c
   labels:
-    app: service-b
+    app: service-c
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: service-b
+      app: service-c
   template:
     metadata:
       labels:
-        app: service-b
+        app: service-c
     spec:
       containers:
-        - name: service-b
-          image: docker.io/denismakogon/go-hello-world
+        - name: service-c
+          image: docker.io/ehazlett/go-demo
           ports:
             - containerPort: 8080
           env:
             - name: TARGET
-              value: "Service B"
+              value: "Service C"

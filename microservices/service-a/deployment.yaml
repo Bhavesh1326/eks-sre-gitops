@@ -16,6 +16,9 @@ spec:
     spec:
       containers:
         - name: service-a
-          image: nginx
+          image: ghcr.io/knative/helloworld-go
           ports:
-            - containerPort: 80
+            - containerPort: 8080
+          env:
+            - name: TARGET
+              value: "Service A"
