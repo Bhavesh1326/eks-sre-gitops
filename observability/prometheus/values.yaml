@@ -1,0 +1,21 @@
+alertmanager:
+  enabled: true
+
+server:
+  global:
+    scrape_interval: 15s
+  retention: "15d"
+  resources:
+    requests:
+      memory: 512Mi
+      cpu: 250m
+    limits:
+      memory: 1Gi
+      cpu: 500m
+
+service:
+  type: ClusterIP
+
+serviceAccount:
+  create: true
+  name: prometheus-sa
