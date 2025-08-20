@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/Bhavesh1326/eks-sre-gitops.git
     path: istio
-    targetRevision: HEAD
+    targetRevision: main
   destination:
     server: https://kubernetes.default.svc
     namespace: istio-system
