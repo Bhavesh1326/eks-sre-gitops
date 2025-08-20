@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: observability
+  name: karpenter
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/Bhavesh1326/eks-sre-gitops.git
     targetRevision: main
-    path: observability
+    path: karpenter
   destination:
     server: https://kubernetes.default.svc
-    namespace: monitoring
+    namespace: karpenter
   syncPolicy:
     automated:
       prune: true

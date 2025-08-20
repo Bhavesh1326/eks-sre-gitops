@@ -1,0 +1,19 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-labels
+spec:
+  validationFailureAction: enforce
+  rules:
+    - name: check-labels
+      match:
+        resources:
+          kinds:
+            - Deployment
+      validate:
+        message: "Deployment must have 'app' and 'owner' labels."
+        pattern:
+          metadata:
+            labels:
+              app: "?*"
+              owner: "?*"

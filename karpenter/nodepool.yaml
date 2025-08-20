@@ -1,0 +1,25 @@
+apiVersion: karpenter.sh/v1alpha5
+kind: NodePool
+metadata:
+  name: default
+spec:
+  template:
+    metadata:
+      labels:
+        type: spot
+    spec:
+      taints:
+        - key: workload
+          value: batch
+          effect: NoSchedule
+      requirements:
+        - key: "karpenter.sh/capacity-type"
+          operator: In
+          values: ["spot"]
+        - key: "topology.kubernetes.io/zone"
+          operator: In
+          values: ["us-east-1a", "us-east-1b"]
+      instanceProfile: karpenter-instance-profile
+  limits:
+    cpu: "1000"
+    memory: "1000Gi"

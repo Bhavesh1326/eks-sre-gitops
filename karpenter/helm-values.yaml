@@ -1,0 +1,6 @@
+controller:
+  clusterName: eks-sre-cluster
+  clusterEndpoint: https://<your-cluster-endpoint>
+  aws:
+    defaultInstanceProfile: karpenter-instance-profile
+    interruptionQueueName: karpenter-interruption-queue
