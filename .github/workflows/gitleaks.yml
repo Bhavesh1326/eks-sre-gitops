@@ -1,6 +1,5 @@
 name: Gitleaks Secret Scan
 
-# Trigger on push and pull request
 on:
   push:
     branches:
@@ -11,13 +10,10 @@ jobs:
   gitleaks-scan:
     runs-on: ubuntu-latest
     steps:
-      # Step 1: Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: Run Gitleaks v2
       - name: Run Gitleaks
         uses: gitleaks/gitleaks-action@v2
         with:
-          redact: true        # Redact secrets in logs
-          failOnError: true  # Fail job if leaks are found
+          args: detect --redact
