@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/Bhavesh1326/eks-sre-gitops.git
     targetRevision: main
-    path: falco
+    path: falco/chart
     helm:
       valueFiles:
         - helm-values.yaml
