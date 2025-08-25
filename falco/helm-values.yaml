@@ -7,8 +7,8 @@ falcosidekick:
   enabled: true
   config:
     slack:
-      existingSecret: falco-slack   # <-- reference the k8s secret
-      key: webhookurl               # <-- key inside that secret
+      existingSecret: falco-slack
+      key: webhookurl
     loki:
       hostport: "http://loki:3100"
       minimumlevel: "warning"
