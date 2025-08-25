@@ -1,0 +1,7 @@
+resources:
+  - gateway/istio-gateway.yaml
+  - service-a
+  - service-b
+  - service-c
+  - peer-authentication-apps.yaml
+  - destination-rule.yaml

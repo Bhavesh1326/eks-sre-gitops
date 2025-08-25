@@ -13,10 +13,12 @@ spec:
     metadata:
       labels:
         app: service-a
+        owner: sre
+        version: v1
     spec:
       containers:
         - name: service-a
-          image: ghcr.io/knative/helloworld-go
+          image: node:20-alpine
           ports:
             - containerPort: 8080
           env:

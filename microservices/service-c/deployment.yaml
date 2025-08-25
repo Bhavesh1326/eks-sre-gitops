@@ -13,10 +13,12 @@ spec:
     metadata:
       labels:
         app: service-c
+        owner: sre
+        version: v1
     spec:
       containers:
         - name: service-c
-          image: docker.io/ehazlett/go-demo
+          image: node:20-slim
           ports:
             - containerPort: 8080
           env:

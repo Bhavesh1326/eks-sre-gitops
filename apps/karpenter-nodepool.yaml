@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: security
+  name: karpenter-nodepool
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/Bhavesh1326/eks-sre-gitops.git
     targetRevision: main
-    path: security
+    path: karpenter/nodepool
   destination:
     server: https://kubernetes.default.svc
-    namespace: kyverno
+    namespace: karpenter
   syncPolicy:
     automated:
       prune: true

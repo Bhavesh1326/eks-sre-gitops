@@ -2,3 +2,11 @@ falco:
   jsonOutput: true
   logLevel: info
   priority: notice
+falcosidekick:
+  enabled: true
+  config:
+    slack:
+      webhookurl: "https://hooks.slack.com/services/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"
+    loki:
+      hostport: "http://loki:3100"
+      minimumlevel: "warning"

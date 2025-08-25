@@ -1,0 +1,14 @@
+tempo:
+  metricsGenerator:
+    enabled: true
+  traces:
+    otlp:
+      grpc:
+        enabled: true
+  resources:
+    requests:
+      memory: 256Mi
+      cpu: 100m
+    limits:
+      memory: 512Mi
+      cpu: 250m

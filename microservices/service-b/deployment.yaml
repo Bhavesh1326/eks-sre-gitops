@@ -13,10 +13,12 @@ spec:
     metadata:
       labels:
         app: service-b
+        owner: sre
+        version: v1
     spec:
       containers:
         - name: service-b
-          image: docker.io/denismakogon/go-hello-world
+          image: node:20-bullseye
           ports:
             - containerPort: 8080
           env:

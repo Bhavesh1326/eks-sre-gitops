@@ -10,8 +10,17 @@ datasources:
         access: proxy
         url: http://prometheus-server
 
+dashboards:
+  istio:
+    istio-dashboard:
+      gnetId: 7636
+      revision: 1
+      datasource: Prometheus
+
+
 service:
   type: ClusterIP
+
 
 resources:
   requests:

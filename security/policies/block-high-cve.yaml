@@ -1,0 +1,20 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: block-high-cve
+spec:
+  validationFailureAction: enforce
+  background: false
+  rules:
+    - name: block-high-cve
+      match:
+        resources:
+          kinds:
+            - Pod
+      validate:
+        message: "Image contains HIGH severity CVEs"
+        deny:
+          conditions:
+            - key: "{{request.object.metadata.annotations.trivy.io/severity}}"
+              operator: Equals
+              value: "HIGH"

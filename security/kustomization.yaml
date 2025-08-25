@@ -1,0 +1,7 @@
+resources:
+  - kyverno-install.yaml
+  - policies/block-latest-tag.yaml
+  - policies/no-privileged-containers.yaml
+  - policies/required-labels.yaml
+  - policies/required-resources.yaml
+  - policies/block-high-cve.yaml 

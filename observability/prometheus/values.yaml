@@ -12,6 +12,19 @@ server:
     limits:
       memory: 1Gi
       cpu: 500m
+  extraScrapeConfigs:
+    - job_name: 'istio-sidecars'
+      kubernetes_sd_configs:
+        - role: pod
+      relabel_configs:
+        - source_labels: [__meta_kubernetes_pod_container_port_name]
+          action: keep
+          regex: "http-envoy-prom"
+        - source_labels: [__meta_kubernetes_namespace]
+          target_label: namespace
+        - source_labels: [__meta_kubernetes_pod_name]
+          target_label: pod
+
 
 service:
   type: ClusterIP

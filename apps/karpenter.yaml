@@ -9,6 +9,9 @@ spec:
     repoURL: https://github.com/Bhavesh1326/eks-sre-gitops.git
     targetRevision: main
     path: karpenter
+    helm:
+      valueFiles:
+        - helm-values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: karpenter

@@ -2,14 +2,23 @@ apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: trivy-scan
+  namespace: trivy
 spec:
-  schedule: "0 */6 * * *"
+  schedule: "0 */6 * * *" # every 6 hours
   jobTemplate:
     spec:
       template:
         spec:
-          containers:
-            - name: trivy
-              image: aquasec/trivy:latest
-              args: ["image", "--severity", "HIGH", "ghcr.io/knative/helloworld-go"]
           restartPolicy: OnFailure
+          containers:
+            - name: trivy-service-a
+              image: aquasec/trivy:latest
+              args: ["image", "--severity", "HIGH,CRITICAL", "node:20-alpine"]
+
+            - name: trivy-service-b
+              image: aquasec/trivy:latest
+              args: ["image", "--severity", "HIGH,CRITICAL", "node:20-bullseye"]
+
+            - name: trivy-service-c
+              image: aquasec/trivy:latest
+              args: ["image", "--severity", "HIGH,CRITICAL", "node:20-slim"]

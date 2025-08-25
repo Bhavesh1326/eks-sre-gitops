@@ -14,5 +14,6 @@ spec:
       route:
         - destination:
             host: service-b
+            subset: v1
             port:
               number: 80
