@@ -1,2 +1,2 @@
 resources:
-  - crd-all.gen.yaml
+  - crd-xx00.yaml
