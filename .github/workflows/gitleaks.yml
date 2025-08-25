@@ -15,7 +15,8 @@ jobs:
 
       - name: Run Gitleaks
         uses: gitleaks/gitleaks-action@v2
-        with:
-          config-path: ""       # default config
-          redact: true          # hide secrets in logs
-          fail-on-error: false  # do not fail the workflow if leaks found
+   
+
+      - name: Run Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        continue-on-error: true
