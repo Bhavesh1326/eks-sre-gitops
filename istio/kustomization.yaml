@@ -1,5 +1,5 @@
 resources:
-  - base
-  - control-plane
-  - ingress-gateway
+  - base/
+  - control-plane/
+  - ingress-gateway/
   - peer-authentication-istio.yaml
