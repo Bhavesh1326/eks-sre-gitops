@@ -1,2 +1,2 @@
 resources:
-  - https://github.com/istio/istio/releases/download/1.21.0/manifests/charts/gateways/istio-ingress/templates/deployment.yaml
+  - deployment.yaml
