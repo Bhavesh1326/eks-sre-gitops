@@ -1393,8 +1393,9 @@ migrate:
 
 # Configuration for the single binary node(s)
 singleBinary:
+  enabled: false
   # -- Number of replicas for the single binary
-  replicas: 1
+  replicas: 0
   autoscaling:
     # -- Enable autoscaling
     enabled: false
