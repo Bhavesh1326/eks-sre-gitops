@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: service-a
-          image: node:20-alpine
+          image: nginxdemos/hello
           ports:
             - containerPort: 8080
           env:

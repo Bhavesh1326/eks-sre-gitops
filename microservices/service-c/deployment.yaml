@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: service-c
-          image: node:20-slim
+          image: kennethreitz/httpbin
           ports:
             - containerPort: 8080
           env:

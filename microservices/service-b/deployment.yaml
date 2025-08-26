@@ -18,7 +18,9 @@ spec:
     spec:
       containers:
         - name: service-b
-          image: node:20-bullseye
+          image: hashicorp/http-echo
+          args:
+            - "-text=Hello from Service B"
           ports:
             - containerPort: 8080
           env:
