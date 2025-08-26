@@ -1,0 +1,6 @@
+[allowlist]
+  paths = ["observability/grafana/ci/with-image-render.yaml"]
+  regexes = ["UExBQ0VIT0xERVIgQ0VSVElGSUNBVEU="]  # base64 for 'PLACEHOLDER CERTIFICATE'
+
+[allowlist]
+  commits = ["27a16b9"]
