@@ -1,14 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: observability
+  name: tempo
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/Bhavesh1326/eks-sre-gitops.git
+    path: observability/tempo
     targetRevision: main
-    path: observability
+    helm:
+      valueFiles:
+        - values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
