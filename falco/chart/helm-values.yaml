@@ -10,5 +10,6 @@ falcosidekick:
       existingSecret: falco-slack   # <-- Refers to Kubernetes secret
       key: webhookurl                # <-- Key inside the secret
     loki:
-      hostport: "http://loki:3100"
+      hostport: "http://loki.monitoring.svc.cluster.local:3100
+
       minimumlevel: "warning"
