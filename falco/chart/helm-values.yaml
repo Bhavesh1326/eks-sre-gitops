@@ -12,4 +12,4 @@ falcosidekick:
     loki:
       hostport: "http://loki.monitoring.svc.cluster.local:3100"
 
-      minimumlevel: "warning"
+      minimumlevel: "notice"
