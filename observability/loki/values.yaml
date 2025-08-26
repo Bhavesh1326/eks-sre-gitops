@@ -1498,27 +1498,27 @@ write:
     # -- Enable autoscaling for the write.
     enabled: false
     # -- Minimum autoscaling replicas for the write.
-    minReplicas: 1
+    # minReplicas: 1
     # -- Maximum autoscaling replicas for the write.
-    maxReplicas: 1
+    # maxReplicas: 1
     # -- Target CPU utilisation percentage for the write.
-    targetCPUUtilizationPercentage: 60
+    # targetCPUUtilizationPercentage: 60
     # -- Target memory utilization percentage for the write.
-    targetMemoryUtilizationPercentage:
+    # targetMemoryUtilizationPercentage:
     # -- Behavior policies while scaling.
-    behavior:
+    # behavior:
       # -- see https://github.com/grafana/loki/blob/main/docs/sources/operations/storage/wal.md#how-to-scale-updown for scaledown details
-      scaleUp:
-        policies:
-          - type: Pods
-            value: 1
-            periodSeconds: 900
-      scaleDown:
-        policies:
-          - type: Pods
-            value: 1
-            periodSeconds: 1800
-        stabilizationWindowSeconds: 3600
+      # scaleUp:
+      #   policies:
+      #     - type: Pods
+      #       value: 1
+      #       periodSeconds: 900
+      # scaleDown:
+      #   policies:
+      #     - type: Pods
+      #       value: 1
+      #       periodSeconds: 1800
+      #   stabilizationWindowSeconds: 3600
   image:
     # -- The Docker registry for the write image. Overrides `loki.image.registry`
     registry: null
@@ -1621,15 +1621,15 @@ read:
     # -- Enable autoscaling for the read, this is only used if `queryIndex.enabled: true`
     enabled: false
     # -- Minimum autoscaling replicas for the read
-    minReplicas: 1
+    # minReplicas: 1
     # -- Maximum autoscaling replicas for the read
-    maxReplicas: 1
+    # maxReplicas: 1
     # -- Target CPU utilisation percentage for the read
-    targetCPUUtilizationPercentage: 60
+    # targetCPUUtilizationPercentage: 60
     # -- Target memory utilisation percentage for the read
-    targetMemoryUtilizationPercentage:
+    # targetMemoryUtilizationPercentage:
     # -- Behavior policies while scaling.
-    behavior: {}
+    # behavior: {}
     #  scaleUp:
     #   stabilizationWindowSeconds: 300
     #   policies:
@@ -1735,15 +1735,15 @@ backend:
     # -- Enable autoscaling for the backend.
     enabled: false
     # -- Minimum autoscaling replicas for the backend.
-    minReplicas: 1
+    # minReplicas: 1
     # -- Maximum autoscaling replicas for the backend.
-    maxReplicas: 1
+    # maxReplicas: 1
     # -- Target CPU utilization percentage for the backend.
-    targetCPUUtilizationPercentage: 60
+    # targetCPUUtilizationPercentage: 60
     # -- Target memory utilization percentage for the backend.
-    targetMemoryUtilizationPercentage:
+    # targetMemoryUtilizationPercentage:
     # -- Behavior policies while scaling.
-    behavior: {}
+    # behavior: {}
     #    scaleUp:
     #     stabilizationWindowSeconds: 300
     #     policies:
