@@ -1462,8 +1462,10 @@ imageRenderer:
     allowPrivilegeEscalation: false
     readOnlyRootFilesystem: true
 
-  podAnnotations:
-    trivy.io/severity: "LOW"
+grafana:
+  deployment:
+    podAnnotations:
+      trivy.io/severity: "LOW"
 
   ## image-renderer pod annotation
   # podAnnotations: {}
