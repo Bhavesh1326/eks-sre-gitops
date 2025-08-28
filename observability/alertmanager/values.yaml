@@ -260,7 +260,10 @@ statefulSet:
 ## Ref: https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#minimum-ready-seconds
 minReadySeconds: 0
 
-podAnnotations: {}
+podAnnotations:
+  trivy.io/severity: "LOW"
+
+# podAnnotations: {}
 podLabels: {}
 
 # Ref: https://kubernetes.io/docs/tasks/run-application/configure-pdb/
