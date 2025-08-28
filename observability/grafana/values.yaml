@@ -1461,7 +1461,7 @@ imageRenderer:
       drop: ['ALL']
     allowPrivilegeEscalation: false
     readOnlyRootFilesystem: true
-grafana:
+
   podAnnotations:
     trivy.io/severity: "LOW"
 
