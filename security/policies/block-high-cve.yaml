@@ -10,15 +10,13 @@ spec:
       match:
         resources:
           kinds:
-            - Pod
+            - Deployment
+            - StatefulSet
+            - DaemonSet
       validate:
         message: "Image contains HIGH severity CVEs"
         deny:
-          conditions:
-            any:
-              - key: "{{request.object.spec.template.metadata.annotations.\"trivy.io/severity\"}}"
-                operator: Equals
-                value: "HIGH"
-
-
-
+          any:
+            - key: "{{request.object.spec.template.metadata.annotations.\"trivy.io/severity\"}}"
+              operator: Equals
+              value: "HIGH"
