@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: service-a
-          image: nginxdemos/hello
+          image: mccutchen/go-httpbin
           ports:
             - containerPort: 8080
           env:

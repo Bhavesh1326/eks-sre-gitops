@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: service-c
-          image: kennethreitz/httpbin
+          image: jaegertracing/example-hotrod
           ports:
             - containerPort: 8080
           env:
