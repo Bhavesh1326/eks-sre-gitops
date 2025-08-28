@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/Bhavesh1326/eks-sre-gitops.git
-    path: observability/alermanager
+    path: observability/alertmanager
     targetRevision: main
     helm:
       valueFiles:
