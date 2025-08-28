@@ -1,0 +1,6 @@
+resources:
+  - block-latest-tag.yaml
+  - no-privileged-containers.yaml
+  - required-labels.yaml
+  - required-resources.yaml
+  - block-high-cve.yaml
