@@ -141,9 +141,10 @@ testFramework:
   #    cpu: 100m
   #    memory: 128Mi
 
+
 labels:
   app: grafana
-  owner: sre-team
+  owner: sre-team   # you already fixed this
 
 securityContext:
   privileged: false
