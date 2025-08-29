@@ -134,6 +134,23 @@ testFramework:
   #  requests:
   #    cpu: 100m
   #    memory: 128Mi
+grafana:
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 200m
+      memory: 256Mi
+
+  securityContext:
+    runAsNonRoot: true
+    allowPrivilegeEscalation: false
+
+  podLabels:
+    app: grafana
+    owner: sre
+
 
 # dns configuration for pod
 dnsPolicy: ~
@@ -1514,7 +1531,8 @@ imageRenderer:
     limitEgress: false
     # Allow additional services to access image-renderer (eg. Prometheus operator when ServiceMonitor is enabled)
     extraIngressSelectors: []
-  resources: {}
+  # resources: {}
+  resource:
 #   limits:
 #     cpu: 100m
 #     memory: 100Mi
