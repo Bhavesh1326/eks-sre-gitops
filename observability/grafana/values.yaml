@@ -154,9 +154,10 @@ grafana:
     runAsNonRoot: true
     allowPrivilegeEscalation: false
 
-  podLabels:
-    app: grafana
-    owner: sre
+labels:
+  app: grafana
+  owner: sre
+
 
 
 # dns configuration for pod
