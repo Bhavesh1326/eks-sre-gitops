@@ -141,22 +141,20 @@ testFramework:
   #    cpu: 100m
   #    memory: 128Mi
 
+labels:
+  app: grafana
+  owner: sre-team
+
+securityContext:
+  privileged: false
+
 resources:
   requests:
     cpu: 100m
     memory: 128Mi
   limits:
-    cpu: 200m
-    memory: 256Mi
-
-containerSecurityContext:
-  privileged: false
-  runAsNonRoot: true
-  allowPrivilegeEscalation: false
-
-deploymentLabels:
-  app: grafana
-  owner: sre
+    cpu: 500m
+    memory: 512Mi
 
 
 
