@@ -141,13 +141,6 @@ testFramework:
   #    cpu: 100m
   #    memory: 128Mi
 grafana:
-  extraLabels:
-    app: grafana
-    owner: sre
-
-  deploymentStrategy:
-    type: Recreate
-
   resources:
     requests:
       cpu: 100m
@@ -156,10 +149,14 @@ grafana:
       cpu: 200m
       memory: 256Mi
 
-  securityContext:
+  containerSecurityContext:
     runAsNonRoot: true
     allowPrivilegeEscalation: false
     privileged: false
+
+  deploymentLabels:
+    app: grafana
+    owner: sre
 
 
 
