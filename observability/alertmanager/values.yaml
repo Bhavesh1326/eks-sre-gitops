@@ -285,6 +285,7 @@ podDisruptionBudget: {}
 command: []
 
 persistence:
+  enable: false
   ## If true, storage will create or use Persistence Volume
   ## If false, storage will use emptyDir
   ##
