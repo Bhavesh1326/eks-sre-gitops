@@ -1,3 +1,9 @@
+rbac:
+  extraClusterRoleRules:
+    - apiGroups: ["apps"]
+      resources: ["replicasets"]
+      verbs: ["create", "get", "list", "watch", "update", "patch", "delete"]
+
 global:
   # -- Overrides the Docker registry globally for all images
   imageRegistry: null
