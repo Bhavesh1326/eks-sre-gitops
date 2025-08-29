@@ -9,11 +9,12 @@ spec:
   selector:
     matchLabels:
       app: service-c
+      owner: sre-team
   template:
     metadata:
       labels:
         app: service-c
-        owner: sre
+        owner: sre-team
         version: v1
       annotations:
         trivy.io/severity: "LOW"
@@ -26,3 +27,16 @@ spec:
           env:
             - name: TARGET
               value: "Service C"
+          resources:   # ✅ required by Kyverno
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "200m"
+              memory: "256Mi"
+          securityContext:   # ✅ required by Kyverno
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            capabilities:
+              drop: ["ALL"]

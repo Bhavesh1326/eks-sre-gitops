@@ -4,6 +4,7 @@ metadata:
   name: service-b
   labels:
     app: service-b
+    owner: sre-team
 spec:
   replicas: 2
   selector:
@@ -13,7 +14,7 @@ spec:
     metadata:
       labels:
         app: service-b
-        owner: sre
+        owner: sre-team
         version: v1
     spec:
       containers:
@@ -26,3 +27,16 @@ spec:
           env:
             - name: TARGET
               value: "Service B"
+          resources:   # ✅ required by Kyverno
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "200m"
+              memory: "256Mi"
+          securityContext:   # ✅ required by Kyverno
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            capabilities:
+              drop: ["ALL"]

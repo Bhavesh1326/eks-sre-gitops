@@ -4,6 +4,7 @@ metadata:
   name: service-a
   labels:
     app: service-a
+    owner: sre-team
 spec:
   replicas: 2
   selector:
@@ -13,7 +14,7 @@ spec:
     metadata:
       labels:
         app: service-a
-        owner: sre
+        owner: sre-team
         version: v1
       annotations:
         trivy.io/severity: "LOW"
@@ -26,3 +27,16 @@ spec:
           env:
             - name: TARGET
               value: "Service A"
+          resources:   # ✅ required by Kyverno
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "200m"
+              memory: "256Mi"
+          securityContext:   # ✅ required by Kyverno
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            capabilities:
+              drop: ["ALL"]
