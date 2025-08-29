@@ -144,13 +144,11 @@ testFramework:
 
 labels:
   app: grafana
-  owner: sre-team   # or your chosen team name
+  owner: sre-team
 
 containerSecurityContext:
   privileged: false
   allowPrivilegeEscalation: false
-  runAsNonRoot: true
-  runAsUser: 472
 
 resources:
   requests:
