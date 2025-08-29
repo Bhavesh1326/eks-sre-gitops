@@ -144,10 +144,13 @@ testFramework:
 
 labels:
   app: grafana
-  owner: sre-team   # you already fixed this
+  owner: sre-team   # or your chosen team name
 
-securityContext:
+containerSecurityContext:
   privileged: false
+  allowPrivilegeEscalation: false
+  runAsNonRoot: true
+  runAsUser: 472
 
 resources:
   requests:
