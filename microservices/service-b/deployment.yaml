@@ -10,6 +10,7 @@ spec:
   selector:
     matchLabels:
       app: service-b
+      owner: sre-team
   template:
     metadata:
       labels:
