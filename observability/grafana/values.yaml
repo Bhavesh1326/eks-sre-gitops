@@ -43,7 +43,7 @@ serviceAccount:
   name:
   nameTest:
   ## ServiceAccount labels.
-  labels: {}
+  # labels: {}
   ## Service account annotations. Can be templated.
   #  annotations:
   #    eks.amazonaws.com/role-arn: arn:aws:iam::123456789000:role/iam-role-name-here
@@ -132,8 +132,8 @@ testFramework:
     tag: "v1.4.1"
   imagePullPolicy: IfNotPresent
   securityContext: {}
-  containerSecurityContext: {}
-  resources: {}
+  # containerSecurityContext: {}
+  # resources: {}
   #  limits:
   #    cpu: 100m
   #    memory: 128Mi
@@ -141,22 +141,6 @@ testFramework:
   #    cpu: 100m
   #    memory: 128Mi
 
-
-labels:
-  app: grafana
-  owner: sre-team
-
-containerSecurityContext:
-  privileged: false
-  allowPrivilegeEscalation: false
-
-resources:
-  requests:
-    cpu: 100m
-    memory: 128Mi
-  limits:
-    cpu: 500m
-    memory: 512Mi
 
 
 
@@ -177,12 +161,26 @@ securityContext:
   fsGroup: 472
 
 containerSecurityContext:
+  privileged: false
   allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
   capabilities:
     drop:
-    - ALL
+      - ALL
   seccompProfile:
     type: RuntimeDefault
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
+labels:
+  app: grafana
+  owner: sre-team
 
 # Enable creating the grafana configmap
 createConfigmap: true
@@ -268,7 +266,7 @@ service:
     # targetPort: 4181 To be used with a proxy extraContainer
   ## Service annotations. Can be templated.
   annotations: {}
-  labels: {}
+  # labels: {}
   portName: service
   # Adds the appProtocol field to the service. This allows to work with istio protocol selection. Ex: "http" or "tcp"
   appProtocol: ""
@@ -281,7 +279,7 @@ serviceMonitor:
   enabled: false
   path: /metrics
   #  namespace: monitoring  (defaults to use the namespace this chart is deployed to)
-  labels: {}
+  # labels: {}
   interval: 30s
   scheme: http
   tlsConfig: {}
@@ -311,7 +309,7 @@ ingress:
   annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
-  labels: {}
+  # labels: {}
   path: /
 
   # pathType is only for k8s >= 1.1=
@@ -358,7 +356,7 @@ route:
     kind: HTTPRoute
 
     annotations: {}
-    labels: {}
+    # labels: {}
 
     hostnames: []
     # - my-filter.example.com
@@ -376,7 +374,7 @@ route:
     ## Additional custom rules that can be added to the route
     additionalRules: []
 
-resources: {}
+# resources: {}
 #  limits:
 #    cpu: 100m
 #    memory: 128Mi
@@ -493,7 +491,7 @@ initChownData:
   ## initChownData resource requests and limits
   ## Ref: http://kubernetes.io/docs/user-guide/compute-resources/
   ##
-  resources: {}
+  # resources: {}
   #  limits:
   #    cpu: 100m
   #    memory: 128Mi
@@ -987,7 +985,7 @@ sidecar:
     tag: 1.30.3
     sha: ""
   imagePullPolicy: IfNotPresent
-  resources: {}
+  # resources: {}
 #   limits:
 #     cpu: 100m
 #     memory: 100Mi
@@ -1479,13 +1477,13 @@ imageRenderer:
   # image-renderer deployment securityContext
   securityContext: {}
   # image-renderer deployment container securityContext
-  containerSecurityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    capabilities:
-      drop: ['ALL']
-    allowPrivilegeEscalation: false
-    readOnlyRootFilesystem: true
+  # containerSecurityContext:
+  #   seccompProfile:
+  #     type: RuntimeDefault
+  #   capabilities:
+  #     drop: ['ALL']
+  #   allowPrivilegeEscalation: false
+  #   readOnlyRootFilesystem: true
 
 podAnnotations:
   trivy.io/severity: "LOW"
@@ -1514,7 +1512,7 @@ imageRenderer:
     enabled: false
     path: /metrics
     #  namespace: monitoring  (defaults to use the namespace this chart is deployed to)
-    labels: {}
+    # labels: {}
     interval: 1m
     scheme: http
     tlsConfig: {}
