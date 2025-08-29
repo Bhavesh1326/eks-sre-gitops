@@ -141,22 +141,32 @@ testFramework:
   #    cpu: 100m
   #    memory: 128Mi
 
-resources:
-  requests:
-    cpu: 100m
-    memory: 128Mi
-  limits:
-    cpu: 200m
-    memory: 256Mi
-
-containerSecurityContext:
-  runAsNonRoot: true
-  allowPrivilegeEscalation: false
-  privileged: false
-
-deploymentLabels:
-  app: grafana
-  owner: sre
+extraObjects:
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: grafana
+      namespace: monitoring
+      labels:
+        app: grafana
+        owner: sre
+    spec:
+      template:
+        spec:
+          containers:
+            - name: grafana
+              image: grafana/grafana:latest
+              resources:
+                requests:
+                  cpu: 100m
+                  memory: 128Mi
+                limits:
+                  cpu: 200m
+                  memory: 256Mi
+              securityContext:
+                privileged: false
+                runAsNonRoot: true
+                allowPrivilegeEscalation: false
 
 
 # dns configuration for pod
