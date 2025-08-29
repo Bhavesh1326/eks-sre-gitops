@@ -150,7 +150,6 @@ grafana:
       memory: 256Mi
 
   securityContext:
-    privileged: false
     runAsNonRoot: true
     allowPrivilegeEscalation: false
 
