@@ -141,19 +141,25 @@ testFramework:
   #    cpu: 100m
   #    memory: 128Mi
 grafana:
-  containers:
-    - name: grafana
-      securityContext:
-        privileged: false
-        runAsNonRoot: true
-        allowPrivilegeEscalation: false
-      resources:
-        requests:
-          cpu: 100m
-          memory: 128Mi
-        limits:
-          cpu: 200m
-          memory: 256Mi
+  extraLabels:
+    app: grafana
+    owner: sre
+
+  deploymentStrategy:
+    type: Recreate
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 200m
+      memory: 256Mi
+
+  securityContext:
+    runAsNonRoot: true
+    allowPrivilegeEscalation: false
+    privileged: false
 
 
 
