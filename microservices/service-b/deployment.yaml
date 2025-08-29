@@ -16,6 +16,8 @@ spec:
         app: service-b
         owner: sre-team
         version: v1
+      annotations:
+        trivy.io/severity: "LOW"
     spec:
       containers:
         - name: service-b
