@@ -289,7 +289,7 @@ persistence:
   ## If true, storage will create or use Persistence Volume
   ## If false, storage will use emptyDir
   ##
-  enabled: true
+  # enabled: true
 
   ## Persistent Volume Storage Class
   ## If defined, storageClassName: <storageClass>
