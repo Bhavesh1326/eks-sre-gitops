@@ -9,7 +9,6 @@ spec:
   selector:
     matchLabels:
       app: service-c
-      owner: sre-team
   template:
     metadata:
       labels:
