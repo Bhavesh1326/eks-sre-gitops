@@ -8,6 +8,8 @@ spec:
   - name: curl
     image: curlimages/curl:8.2.1
     command: ["sleep", "3600"]
+    stdin: true
+    tty: true
     resources:
       requests:
         cpu: 50m
