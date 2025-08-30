@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: curlpod
+  namespace: test-networking
+  labels:
+    app: curlpod
+spec:
+  containers:
+  - name: curl
+    image: curlimages/curl:8.2.1
+    command: ["sleep", "3600"]
+    stdin: true
+    tty: true
+    resources:
+      requests:
+        cpu: 50m
+        memory: 64Mi
+      limits:
+        cpu: 100m
+        memory: 128Mi
+  restartPolicy: Never
