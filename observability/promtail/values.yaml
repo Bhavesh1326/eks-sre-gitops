@@ -131,10 +131,11 @@ podLabels: {}
 # -- Pod annotations
 # podAnnotations: {}
 
-podAnnotations:
-  kyverno-disable-block-high-cve: "true"
-  kyverno-disable-autogen-no-latest-tag: "true"
-  kyverno-disable-autogen-check-resources: "true"
+daemonset:
+  podAnnotations:
+    kyverno-disable-block-high-cve: "true"
+    kyverno-disable-autogen-no-latest-tag: "true"
+    kyverno-disable-autogen-check-resources: "true"
 #  prometheus.io/scrape: "true"
 #  prometheus.io/port: "http-metrics"
 
