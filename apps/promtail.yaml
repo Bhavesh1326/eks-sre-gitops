@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://grafana.github.io/helm-charts   # Pull chart from Grafana repo
+    repoURL: https://grafana.github.io/helm-charts
     chart: promtail
-    targetRevision: 6.17.0                           # Chart version
+    targetRevision: 6.17.0
     helm:
       valueFiles:
         - https://raw.githubusercontent.com/Bhavesh1326/eks-sre-gitops/main/observability/promtail-values.yaml
