@@ -1,0 +1,15 @@
+# promtail-values.yaml
+
+image:
+  tag: 3.0.0   # or the latest stable version you want
+
+podAnnotations:
+  trivy.io/severity: "HIGH"   # allow HIGH CVEs, block only CRITICAL
+
+resources:
+  requests:
+    cpu: "100m"
+    memory: "128Mi"
+  limits:
+    cpu: "200m"
+    memory: "256Mi"
