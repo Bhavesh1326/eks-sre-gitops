@@ -9,3 +9,7 @@ serviceAccount:
 
 rbac:
   create: true
+
+daemonset:
+  podLabels:
+    kyverno-disable-block-high-cve: "true"
