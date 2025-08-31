@@ -12,8 +12,7 @@ global:
 
 daemonset:
   enabled: true
-  nodeSelector:
-    node-role.kubernetes.io/control-plane: ""
+  nodeSelector: {}
   # -- Deploys Promtail as a DaemonSet
   
   podAnnotations:
