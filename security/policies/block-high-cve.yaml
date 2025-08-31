@@ -17,7 +17,10 @@ spec:
         message: "Image contains HIGH severity CVEs"
         deny:
           conditions:
-            any:
+            all:
+              - key: "{{\"trivy.io/severity\" in request.object.spec.template.metadata.annotations}}"
+                operator: Equals
+                value: true
               - key: "{{request.object.spec.template.metadata.annotations.\"trivy.io/severity\"}}"
                 operator: Equals
                 value: "HIGH"
