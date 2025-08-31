@@ -11,6 +11,8 @@ global:
   imagePullSecrets: []
 
 daemonset:
+  nodeSelector:
+    node-role.kubernetes.io/control-plane: ""
   # -- Deploys Promtail as a DaemonSet
   enabled: true
   podAnnotations:
@@ -214,7 +216,7 @@ serviceAccount:
 automountServiceAccountToken: true
 
 # -- Node selector for pods
-nodeSelector: {}
+# nodeSelector: {}
 
 # -- Affinity configuration for pods
 affinity: {}
