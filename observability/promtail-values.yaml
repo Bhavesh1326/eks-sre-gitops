@@ -1,41 +1,61 @@
-# promtail-values.yaml
+# Promtail values override
 
+# Use a safe image (Kyverno will block images with high CVEs)
 image:
   repository: grafana/promtail
-  tag: 3.0.0   # override to avoid HIGH CVEs flagged by Kyverno
-  pullPolicy: IfNotPresent
+  tag: 2.9.3   # matches chart 6.15.5
 
-# Deployment namespace
-namespaceOverride: monitoring
+# Service settings
+service:
+  type: ClusterIP
+  port: 3101
 
-# Service account
-serviceAccount:
-  create: true
-  name: promtail
+# ServiceMonitor for Prometheus
+serviceMonitor:
+  enabled: true
 
 # RBAC
 rbac:
   create: true
 
-# Service
-service:
-  enabled: true
-  type: ClusterIP
-  port: 3101
+# Resources (tune based on your cluster capacity)
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
 
-# Promtail configuration
+# Tolerations to run on all nodes (like fluentd/daemonset)
+tolerations:
+  - effect: NoSchedule
+    operator: Exists
+  - effect: NoExecute
+    operator: Exists
+
+# Log targets
 config:
-  clients:
-    - url: http://loki:3100/loki/api/v1/push
+  server:
+    http_listen_port: 3101
+    grpc_listen_port: 0
 
   positions:
     filename: /run/promtail/positions.yaml
 
+  clients:
+    - url: http://loki.monitoring:3100/loki/api/v1/push
+
   scrape_configs:
-    - job_name: system
-      static_configs:
-        - targets:
-            - localhost
-          labels:
-            job: varlogs
-            __path__: /var/log/*log
+    - job_name: kubernetes-pods
+      kubernetes_sd_configs:
+        - role: pod
+      relabel_configs:
+        - source_labels: [__meta_kubernetes_pod_node_name]
+          target_label: __host__
+        - source_labels: [__meta_kubernetes_namespace]
+          target_label: namespace
+        - source_labels: [__meta_kubernetes_pod_name]
+          target_label: pod
+        - source_labels: [__meta_kubernetes_pod_container_name]
+          target_label: container
