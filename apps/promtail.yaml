@@ -10,8 +10,11 @@ spec:
     chart: promtail
     targetRevision: 6.17.0
     helm:
-      valueFiles:
-        - https://raw.githubusercontent.com/Bhavesh1326/eks-sre-gitops/main/observability/promtail-values.yaml
+      values: |
+        image:
+          repository: cgr.dev/chainguard/promtail
+          tag: latest
+          pullPolicy: IfNotPresent
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
