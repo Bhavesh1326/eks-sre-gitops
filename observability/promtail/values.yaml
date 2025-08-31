@@ -16,9 +16,10 @@ daemonset:
   # -- Deploys Promtail as a DaemonSet
   
   podAnnotations:
-    kyverno.io/disable-block-high-cve: "true"
-    kyverno.io/disable-autogen-no-latest-tag: "true"
-    kyverno.io/disable-autogen-check-resources: "true"
+    "trivy.io/severity": "LOW"
+    "kyverno.io/disable-block-high-cve": "true"
+    "kyverno.io/disable-autogen-no-latest-tag": "true"
+    "kyverno.io/disable-autogen-check-resources": "true"
   
   tolerations:
   - key: node-role.kubernetes.io/master
