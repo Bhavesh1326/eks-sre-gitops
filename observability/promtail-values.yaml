@@ -1,6 +1,6 @@
 image:
-  repository: grafana/promtail
-  tag: 3.1.1   # or latest stable version
+  repository: cgr.dev/chainguard/promtail
+  tag: latest
 
 podAnnotations:
   trivy.io/severity: "HIGH"
