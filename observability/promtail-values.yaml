@@ -1,4 +1,5 @@
 # observability/promtail-values.yaml
+
 image:
   repository: cgr.dev/chainguard/promtail   # ✅ CVE-free image
   tag: latest
