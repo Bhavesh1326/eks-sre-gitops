@@ -1,0 +1,16 @@
+loki:
+  serviceName: loki-gateway
+
+podAnnotations:
+  trivy.io/severity: "HIGH"
+
+resources:
+  requests:
+    cpu: "100m"
+    memory: "128Mi"
+  limits:
+    cpu: "200m"
+    memory: "256Mi"
+
+image:
+  tag: latest
