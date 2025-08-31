@@ -6,12 +6,12 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://grafana.github.io/helm-charts
+    repoURL: https://grafana.github.io/helm-charts   # Pull chart from Grafana repo
     chart: promtail
-    targetRevision: 6.17.0
+    targetRevision: 6.17.0                           # Chart version
     helm:
       valueFiles:
-        - observability/promtail-values.yaml
+        - https://raw.githubusercontent.com/Bhavesh1326/eks-sre-gitops/main/observability/promtail-values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
