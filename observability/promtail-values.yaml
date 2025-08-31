@@ -1,5 +1,6 @@
 image:
-  tag: 3.1.0
+  repository: grafana/promtail
+  tag: 3.1.1   # or latest stable version
 
 podAnnotations:
   trivy.io/severity: "HIGH"
