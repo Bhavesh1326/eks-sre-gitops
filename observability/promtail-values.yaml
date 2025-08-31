@@ -2,8 +2,9 @@
 
 image:
   repository: cgr.dev/chainguard/promtail
-  tag: v2.9.0             # Fixed version, not 'latest'
+  tag: v2.9.0
   pullPolicy: IfNotPresent
+
 
 serviceAccount:
   create: true
@@ -13,7 +14,7 @@ rbac:
   create: true
 
 daemonset:
-  podLabels:
+  podAnnotations:
     kyverno-disable-block-high-cve: "true"  # skips block-high-cve policy
 
 resources:
