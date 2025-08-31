@@ -1,21 +1,41 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
+# promtail-values.yaml
+
+image:
+  repository: grafana/promtail
+  tag: 3.0.0   # override to avoid HIGH CVEs flagged by Kyverno
+  pullPolicy: IfNotPresent
+
+# Deployment namespace
+namespaceOverride: monitoring
+
+# Service account
+serviceAccount:
+  create: true
   name: promtail
-  namespace: argocd
-spec:
-  project: default
-  source:
-    repoURL: https://grafana.github.io/helm-charts
-    chart: promtail
-    targetRevision: 6.17.0
-    helm:
-      valueFiles:
-        - https://raw.githubusercontent.com/Bhavesh1326/eks-sre-gitops/main/observability/promtail-values.yaml
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: monitoring
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+
+# RBAC
+rbac:
+  create: true
+
+# Service
+service:
+  enabled: true
+  type: ClusterIP
+  port: 3101
+
+# Promtail configuration
+config:
+  clients:
+    - url: http://loki:3100/loki/api/v1/push
+
+  positions:
+    filename: /run/promtail/positions.yaml
+
+  scrape_configs:
+    - job_name: system
+      static_configs:
+        - targets:
+            - localhost
+          labels:
+            job: varlogs
+            __path__: /var/log/*log
