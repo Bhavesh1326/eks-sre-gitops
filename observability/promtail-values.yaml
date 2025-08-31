@@ -1,8 +1,6 @@
-# observability/promtail-values.yaml
-
 image:
-  repository: cgr.dev/chainguard/promtail   # ✅ CVE-free image
-  tag: latest
+  repository: cgr.dev/chainguard/promtail
+  tag: 3.1.1        # ✅ stable hardened build instead of 'latest'
   pullPolicy: IfNotPresent
 
 podAnnotations:
