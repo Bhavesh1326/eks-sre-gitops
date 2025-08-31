@@ -1,6 +1,6 @@
 image:
   repository: cgr.dev/chainguard/promtail
-  tag: latest
+  tag: v3.5.1
   pullPolicy: IfNotPresent
 
 serviceAccount:

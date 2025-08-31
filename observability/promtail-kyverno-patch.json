@@ -1,0 +1,13 @@
+{
+  "spec": {
+    "exclude": {
+      "resources": [
+        {
+          "kinds": ["DaemonSet"],
+          "namespaces": ["monitoring"],
+          "names": ["promtail"]
+        }
+      ]
+    }
+  }
+}
