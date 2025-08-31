@@ -106,10 +106,10 @@ initContainer: []
   #     - sh
   #     - -c
   #     - sysctl -w fs.inotify.max_user_instances=128
-securityContext:
-  privileged: false
-  runAsNonRoot: true
-  allowPrivilegeEscalation: false
+# containerSecurityContext:
+#   privileged: false
+#   runAsNonRoot: true
+#   allowPrivilegeEscalation: false
 
 
 image:
@@ -195,11 +195,13 @@ podSecurityContext:
 
 # -- The security context for containers
 containerSecurityContext:
+  privileged: false
+  runAsNonRoot: true
+  allowPrivilegeEscalation: false
   readOnlyRootFilesystem: true
   capabilities:
     drop:
       - ALL
-  allowPrivilegeEscalation: false
 
 rbac:
   # -- Specifies whether RBAC resources are to be created
@@ -632,12 +634,12 @@ sidecar:
     # -- Extra environment variables from secrets or configmaps for sidecar config-reloader
     extraEnvFrom: []
     # -- The security context for containers for sidecar config-reloader
-    containerSecurityContext:
-      readOnlyRootFilesystem: true
-      capabilities:
-        drop:
-          - ALL
-      allowPrivilegeEscalation: false
+    # containerSecurityContext:
+    #   readOnlyRootFilesystem: true
+    #   capabilities:
+    #     drop:
+    #       - ALL
+    #   allowPrivilegeEscalation: false
     # -- Readiness probe for sidecar config-reloader
     readinessProbe: {}
     # -- Liveness probe for sidecar config-reloader
