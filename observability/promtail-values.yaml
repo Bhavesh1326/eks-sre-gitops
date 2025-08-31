@@ -1,10 +1,7 @@
-# promtail-values.yaml
-
 image:
   repository: cgr.dev/chainguard/promtail
-  tag: v2.9.0
+  tag: v2.9.0        # fixed version
   pullPolicy: IfNotPresent
-
 
 serviceAccount:
   create: true
@@ -15,7 +12,7 @@ rbac:
 
 daemonset:
   podAnnotations:
-    kyverno-disable-block-high-cve: "true"  # skips block-high-cve policy
+    kyverno-disable-block-high-cve: "true"  # disables block-high-cve
 
 resources:
   requests:
@@ -25,7 +22,7 @@ resources:
     cpu: 200m
     memory: 256Mi
 
-# Optional: you can add tolerations and nodeSelector if needed
+# Optional
 tolerations:
   - key: "node-role.kubernetes.io/monitoring"
     operator: "Exists"
@@ -34,7 +31,6 @@ tolerations:
 nodeSelector:
   monitoring: "true"
 
-# Optional: configure Promtail args or extraScrapeConfigs
 config:
   lokiAddress: "http://loki.monitoring.svc.cluster.local:3100/loki/api/v1/push"
   extraScrapeConfigs: []
