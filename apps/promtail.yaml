@@ -11,7 +11,7 @@ spec:
     targetRevision: latest
     helm:
       valueFiles:
-        - ../../observability/promtail-values.yaml
+        - ../observability/promtail-values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
