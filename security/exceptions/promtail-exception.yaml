@@ -1,0 +1,17 @@
+apiVersion: kyverno.io/v1alpha2
+kind: PolicyException
+metadata:
+  name: promtail-exception
+  namespace: monitoring
+spec:
+  exceptions:
+    - policyName: disallow-privileged
+      ruleNames:
+        - autogen-check-privileged
+  match:
+    any:
+      - resources:
+          kinds:
+            - DaemonSet
+          names:
+            - promtail
