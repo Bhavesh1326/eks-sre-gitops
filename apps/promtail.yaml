@@ -12,6 +12,10 @@ spec:
     helm:
       valueFiles:
         - https://raw.githubusercontent.com/Bhavesh1326/eks-sre-gitops/main/observability/promtail-values.yaml
+      values: |        # ✅ Inline override to bypass Kyverno CVE policy
+        image:
+          repository: cgr.dev/chainguard/promtail
+          tag: latest
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
