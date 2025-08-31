@@ -1,9 +1,9 @@
-# promtail-values.yaml
+# observability/promtail-values.yaml
 image:
-  repository: cgr.dev/chainguard/promtail
-  tag: latest   # Chainguard keeps this rebuilt and CVE-free
+  repository: cgr.dev/chainguard/promtail   # ✅ CVE-free image
+  tag: latest
+  pullPolicy: IfNotPresent
 
-# If Kyverno checks annotations, keep severity strict
 podAnnotations:
   trivy.io/severity: "CRITICAL"
 
@@ -18,7 +18,6 @@ resources:
 loki:
   serviceName: loki-gateway
 
-# Standard scrape configs for Kubernetes
 config:
   clients:
     - url: http://loki-gateway.monitoring.svc.cluster.local/loki/api/v1/push
