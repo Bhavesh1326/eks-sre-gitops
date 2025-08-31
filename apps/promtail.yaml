@@ -6,12 +6,12 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/Bhavesh1326/eks-sre-gitops   # Git repo ArgoCD is tracking
-    path: observability                                         # path inside repo
-    targetRevision: main                                        # branch
+    repoURL: https://grafana.github.io/helm-charts   # Helm repo
+    chart: promtail
+    targetRevision: 6.16.6
     helm:
       valueFiles:
-        - promtail-values.yaml                                  # relative to `path`
+        - https://raw.githubusercontent.com/Bhavesh1326/eks-sre-gitops/main/observability/promtail-values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
