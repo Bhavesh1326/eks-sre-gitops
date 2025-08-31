@@ -8,13 +8,10 @@ spec:
   source:
     repoURL: https://grafana.github.io/helm-charts
     chart: promtail
-    targetRevision: 6.16.6       # Use a chart version Kyverno allows
+    targetRevision: 6.16.6        # older chart version known to work
     helm:
-      values: |
-        image:
-          repository: cgr.dev/chainguard/promtail
-          tag: latest
-          pullPolicy: IfNotPresent
+      valueFiles:
+        - observability/promtail-values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
