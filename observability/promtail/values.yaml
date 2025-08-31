@@ -10,9 +10,6 @@ global:
   # -- Allow parent charts to override registry credentials
   imagePullSecrets: []
 
-
-
-
 daemonset:
   nodeSelector:
     node-role.kubernetes.io/control-plane: ""
@@ -22,13 +19,6 @@ daemonset:
     kyverno-disable-block-high-cve: "true"
     kyverno-disable-autogen-no-latest-tag: "true"
     kyverno-disable-autogen-check-resources: "true"
-  tolerations:
-  - key: node-role.kubernetes.io/master
-    operator: Exists
-    effect: NoSchedule
-  - key: node-role.kubernetes.io/control-plane
-    operator: Exists
-    effect: NoSchedule
   autoscaling:
     # -- Creates a VerticalPodAutoscaler for the daemonset
     enabled: false
@@ -114,11 +104,9 @@ image:
   # -- The Docker registry
   registry: docker.io
   # -- Docker image repository
-  # repository: grafana/promtail
-  repository: cgr.dev/chainguard/promtail
+  repository: grafana/promtail
   # -- Overrides the image tag whose default is the chart's appVersion
-  # tag: ""
-  tag: v2.9.0
+  tag: ""
   # -- Docker image pull policy
   pullPolicy: IfNotPresent
 
@@ -234,7 +222,13 @@ automountServiceAccountToken: true
 affinity: {}
 
 # -- Tolerations for pods. By default, pods will be scheduled on master/control-plane nodes.
-
+tolerations:
+  - key: node-role.kubernetes.io/master
+    operator: Exists
+    effect: NoSchedule
+  - key: node-role.kubernetes.io/control-plane
+    operator: Exists
+    effect: NoSchedule
 
 # -- Default volumes that are mounted into pods. In most cases, these should not be changed.
 # Use `extraVolumes`/`extraVolumeMounts` for additional custom volumes.
