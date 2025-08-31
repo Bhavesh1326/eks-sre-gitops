@@ -106,8 +106,11 @@ initContainer: []
   #     - sh
   #     - -c
   #     - sysctl -w fs.inotify.max_user_instances=128
-  #   securityContext:
-  #     privileged: true
+securityContext:
+  privileged: false
+  runAsNonRoot: true
+  allowPrivilegeEscalation: false
+
 
 image:
   # -- The Docker registry
