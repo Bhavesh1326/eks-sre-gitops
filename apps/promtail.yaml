@@ -8,10 +8,10 @@ spec:
   source:
     repoURL: https://grafana.github.io/helm-charts
     chart: promtail
-    targetRevision: 6.16.6        # older chart version known to work
+    targetRevision: 6.16.6
     helm:
       valueFiles:
-        - observability/promtail-values.yaml
+        - https://raw.githubusercontent.com/Bhavesh1326/eks-sre-gitops/main/observability/promtail-values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
