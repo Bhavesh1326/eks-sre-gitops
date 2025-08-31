@@ -1,6 +1,6 @@
 image:
   repository: cgr.dev/chainguard/promtail
-  tag: latest
+  tag: v2.9.0        # Use a specific version instead of 'latest'
   pullPolicy: IfNotPresent
 
 serviceAccount:
@@ -13,3 +13,11 @@ rbac:
 daemonset:
   podLabels:
     kyverno-disable-block-high-cve: "true"
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
