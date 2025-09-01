@@ -11,9 +11,11 @@ spec:
     - match:
         - uri:
             prefix: /service-b
+      rewrite:
+        uri: "/"        # This rewrites /service-b → / so the service receives /
       route:
         - destination:
             host: service-b
             subset: v1
             port:
-              number: 8080
+              number: 80   # MUST match Service port
