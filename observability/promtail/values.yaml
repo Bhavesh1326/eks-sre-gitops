@@ -196,7 +196,8 @@ podSecurityContext:
 # -- The security context for containers
 containerSecurityContext:
   privileged: false
-  runAsNonRoot: false
+  runAsNonRoot: true
+  runAsUser: 65532
   allowPrivilegeEscalation: false
   readOnlyRootFilesystem: true
   capabilities:
