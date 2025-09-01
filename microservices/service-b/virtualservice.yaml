@@ -2,21 +2,18 @@ apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
   name: service-b
-  namespace: default
 spec:
-  gateways:
-    - sre-gateway
   hosts:
     - "*"
+  gateways:
+    - sre-gateway
   http:
     - match:
         - uri:
             prefix: /service-b
-      rewrite:
-        uri: "/"   # important, maps /service-b → /
       route:
         - destination:
             host: service-b
             subset: v1
             port:
-              number: 8080   # <- should match containerPort if using sidecar
+              number: 80
