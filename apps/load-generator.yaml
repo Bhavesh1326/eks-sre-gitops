@@ -16,6 +16,8 @@ spec:
       labels:
         app: load-generator
         owner: sre-team
+      annotations:
+        sidecar.istio.io/inject: "true"
     spec:
       containers:
       - name: hey
