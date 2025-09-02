@@ -19,9 +19,15 @@ spec:
     spec:
       containers:
       - name: hey
-        image: ghcr.io/rakyll/hey:v0.1.4   # or any other load generator image
-        command: ["hey"]
-        args: ["-z", "30s", "-q", "10", "http://service-a.default.svc.cluster.local:8080"]
+        image: busybox:1.36
+        command: ["sh", "-c"]
+        args:
+          - |
+            echo "Starting load test...";
+            while true; do
+              wget -qO- http://service-a.default.svc.cluster.local:8080/metrics;
+              sleep 1;
+            done
         resources:
           requests:
             cpu: 100m
@@ -29,4 +35,3 @@ spec:
           limits:
             cpu: 200m
             memory: 128Mi
-      # Deployment default: restartPolicy: Always (remove explicit restartPolicy)
