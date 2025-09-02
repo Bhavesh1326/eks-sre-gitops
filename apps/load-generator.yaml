@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: hey
-        image: ghcr.io/rakyll/hey:latest
+        image: ghcr.io/rakyll/hey:v0.1.4
         command: ["hey"]
         args: ["-z", "30s", "-q", "10", "http://service-a.default.svc.cluster.local"]
         resources:
