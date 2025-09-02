@@ -19,9 +19,9 @@ spec:
     spec:
       containers:
       - name: hey
-        image: busybox:1.36
-        command: ["sh", "-c"]
-        args: ["echo 'Load test running'; sleep 30"]
+        image: ghcr.io/rakyll/hey:v0.1.4   # or any other load generator image
+        command: ["hey"]
+        args: ["-z", "30s", "-q", "10", "http://service-a.default.svc.cluster.local:8080"]
         resources:
           requests:
             cpu: 100m
