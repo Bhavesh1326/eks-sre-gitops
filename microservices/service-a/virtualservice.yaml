@@ -11,8 +11,8 @@ spec:
     - match:
         - uri:
             prefix: /service-a
-      rewrite:
-        uri: "/"
+      # rewrite:
+      #   uri: "/"
       route:
         - destination:
             host: service-a
