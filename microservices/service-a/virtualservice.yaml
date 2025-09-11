@@ -12,10 +12,10 @@ spec:
         - uri:
             regex: "/service-a/(.*)"
       rewrite:
-        uri: "$1"
+        uri: "/$1"
       route:
         - destination:
             host: service-a
             subset: v1
             port:
-              number: 80
+              number: 8080
