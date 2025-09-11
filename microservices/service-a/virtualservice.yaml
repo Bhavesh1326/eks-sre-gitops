@@ -16,4 +16,4 @@ spec:
             host: service-a
             subset: v1
             port:
-              number: 80
+              number: 8080
