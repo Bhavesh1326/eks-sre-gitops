@@ -10,9 +10,7 @@ spec:
   http:
     - match:
       - uri:
-          regex: "/service-a/(.*)"
-      rewrite:
-        uri: "/$1"
+          regex: /service-a
       route:
         - destination:
             host: service-a.default.svc.cluster.local
