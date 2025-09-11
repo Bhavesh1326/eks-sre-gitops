@@ -13,7 +13,7 @@ spec:
             prefix: /service-c 
       route:
         - destination:
-            host: service-c.default.svc.cluster.local
+            host: service-c
             subset: v1
             port:
               number: 80
