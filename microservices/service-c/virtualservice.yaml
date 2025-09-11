@@ -10,9 +10,7 @@ spec:
   http:
     - match:
         - uri:
-            prefix: /service-c
-      rewrite:
-        uri: "/"  
+            prefix: /service-c 
       route:
         - destination:
             host: service-c.default.svc.cluster.local
