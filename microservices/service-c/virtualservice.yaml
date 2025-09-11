@@ -11,11 +11,11 @@ spec:
     - match:
         - uri:
             prefix: /service-c
-      # rewrite:
-      #   uri: /
+      rewrite:
+        uri: "/"  
       route:
         - destination:
-            host: service-c
+            host: service-c.default.svc.cluster.local
             subset: v1
             port:
               number: 80
