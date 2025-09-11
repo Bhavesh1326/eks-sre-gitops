@@ -12,7 +12,7 @@ spec:
         - uri:
             prefix: /service-a
       rewrite:
-        uri: ""
+        uri: /
       route:
         - destination:
             host: service-a

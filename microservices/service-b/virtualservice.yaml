@@ -12,7 +12,7 @@ spec:
         - uri:
             prefix: /service-b
       rewrite:
-        uri: ""       # forward to pod root
+        uri: /       # forward to pod root
       route:
         - destination:
             host: service-b
