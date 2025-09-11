@@ -13,7 +13,7 @@ spec:
           regex: /service-a
       route:
         - destination:
-            host: service-a.default.svc.cluster.local
+            host: service-a
             subset: v1
             port:
               number: 80
