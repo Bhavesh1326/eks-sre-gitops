@@ -10,12 +10,10 @@ spec:
   http:
     - match:
         - uri:
-            regex: "/service-a/(.*)"
-      rewrite:
-        uri: "/$1"
+            prefix: /service-a
       route:
         - destination:
             host: service-a
             subset: v1
             port:
-              number: 8080
+              number: 80
