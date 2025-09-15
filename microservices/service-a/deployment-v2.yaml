@@ -1,11 +1,3 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: service-a-v2
-  labels:
-    app: service-a
-    owner: sre-team
-    version: v2
 spec:
   replicas: 2
   selector:
@@ -20,14 +12,16 @@ spec:
     spec:
       containers:
         - name: service-a
-          image: alpine:3.18
-          command: ["sh", "-c"]
-          args:
-            - echo "Starting service A v2"; 
-              apk add --no-cache curl; 
-              while true; do echo "{\"TARGET\":\"$TARGET\"}" | nc -l -p 8080 -q 1; done
+          image: mccutchen/go-httpbin
           ports:
             - containerPort: 8080
           env:
             - name: TARGET
               value: "Service A v2"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "200m"
+              memory: "256Mi"
