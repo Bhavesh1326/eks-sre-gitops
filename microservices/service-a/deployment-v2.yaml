@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-a-v2
+  labels:
+    app: service-a
+    owner: sre-team
+    version: v2
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: service-a
+      version: v2
+  template:
+    metadata:
+      labels:
+        app: service-a
+        version: v2
+    spec:
+      containers:
+        - name: service-a
+          image: mccutchen/go-httpbin   # same as v1
+          ports:
+            - containerPort: 8080
+          env:
+            - name: TARGET
+              value: "Service A v2"

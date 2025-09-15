@@ -9,11 +9,18 @@ spec:
     - sre-gateway
   http:
     - match:
-      - uri:
-          regex: /service-a
+        - uri:
+            regex: /service-a
       route:
         - destination:
             host: service-a
             subset: v1
             port:
               number: 80
+          weight: 50
+        - destination:
+            host: service-a
+            subset: v2
+            port:
+              number: 80
+          weight: 50
