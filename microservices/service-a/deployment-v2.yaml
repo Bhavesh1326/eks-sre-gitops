@@ -1,3 +1,11 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-a-v2
+  namespace: default
+  labels:
+    app: service-a
+    version: v2
 spec:
   replicas: 2
   selector:
