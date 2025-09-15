@@ -20,16 +20,14 @@ spec:
     spec:
       containers:
         - name: service-a
-          image: mccutchen/go-httpbin
+          image: alpine:3.18
+          command: ["sh", "-c"]
+          args:
+            - echo "Starting service A v2"; 
+              apk add --no-cache curl; 
+              while true; do echo "{\"TARGET\":\"$TARGET\"}" | nc -l -p 8080 -q 1; done
           ports:
             - containerPort: 8080
           env:
             - name: TARGET
               value: "Service A v2"
-          resources:
-            requests:
-              cpu: "100m"
-              memory: "128Mi"
-            limits:
-              cpu: "200m"
-              memory: "256Mi"
