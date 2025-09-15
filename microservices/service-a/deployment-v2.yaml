@@ -3,8 +3,8 @@ kind: Deployment
 metadata:
   name: service-a-v2
   labels:
-    app: service-a       # required by Kyverno
-    owner: sre-team      # required by Kyverno
+    app: service-a
+    owner: sre-team
     version: v2
 spec:
   replicas: 2
@@ -20,9 +20,9 @@ spec:
     spec:
       containers:
         - name: service-a
-          image: mccutchen/go-httpbin
+          image: kennethreitz/httpbin      # ✅ changed image
           ports:
-            - containerPort: 8080
+            - containerPort: 80           # ✅ httpbin listens on 80
           env:
             - name: TARGET
               value: "Service A v2"
