@@ -20,9 +20,16 @@ spec:
     spec:
       containers:
         - name: service-a
-          image: mccutchen/go-httpbin   # same as v1
+          image: mccutchen/go-httpbin
           ports:
             - containerPort: 8080
           env:
             - name: TARGET
               value: "Service A v2"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "200m"
+              memory: "256Mi"
