@@ -4,8 +4,8 @@ metadata:
   name: service-a
 spec:
   hosts:
-    # - service-a
-    - "*"
+    - service-a
+    # - "*"
   gateways:
     - mesh
     - sre-gateway
