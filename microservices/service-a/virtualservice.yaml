@@ -4,13 +4,15 @@ metadata:
   name: service-a
 spec:
   hosts:
+    - service-a
     - "*"
   gateways:
+    - mesh
     - sre-gateway
   http:
     - match:
         - uri:
-            regex: /service-a
+            prefix: /service-a
       route:
         - destination:
             host: service-a
