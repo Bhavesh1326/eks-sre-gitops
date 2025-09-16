@@ -8,7 +8,7 @@ spec:
     # - "*"
   gateways:
     - mesh
-    - sre-gateway
+    # - sre-gateway
   http:
     - match:
         - uri:
