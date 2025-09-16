@@ -7,7 +7,8 @@ spec:
   host: service-a
   trafficPolicy:
     tls:
-      mode: ISTIO_MUTUAL
+      # mode: ISTIO_MUTUAL
+      mode: DISABLE
   subsets:
     - name: v1
       labels:
